@@ -1,0 +1,26 @@
+services:
+  OpenWebUI:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: OpenWebUI
+    restart: unless-stopped
+    hostname: openwebui
+    networks:
+      - OpenWebUI
+    environment:
+      - OPENAI_API_BASE_URL=${OPENAI_API_BASE_URL}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ENABLE_IMAGE_GENERATION=false
+      - ENABLE_OLLAMA_API=false
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${DOCKER_VOLUMES}/OpenWebUI:/app/backend/data
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 1GB
+
+networks:
+  OpenWebUI:
+    name: OpenWebUI
+    external: true
