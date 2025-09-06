@@ -1,3 +1,4 @@
+name: OpenWebUI
 services:
   OpenWebUI:
     image: ghcr.io/open-webui/open-webui:main
