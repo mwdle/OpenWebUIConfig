@@ -15,6 +15,11 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${DOCKER_VOLUMES}/OpenWebUI:/app/backend/data
+
+    user: "${UID}:${GID}"
+    security_opt:
+      - no-new-privileges:true
+
     deploy:
       resources:
         limits:
