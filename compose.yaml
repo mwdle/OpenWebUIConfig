@@ -8,6 +8,7 @@ services:
     networks:
       - OpenWebUI
     environment:
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
       - OPENAI_API_BASE_URL=${OPENAI_API_BASE_URL}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - ENABLE_IMAGE_GENERATION=false
