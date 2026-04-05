@@ -19,15 +19,21 @@ services:
       - ${DOCKER_VOLUMES}/OpenWebUI:/app/backend/data
 
     user: "${UID}:${GID}"
+    read_only: true
     security_opt:
       - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+    logging:
+      driver: journald
 
     deploy:
       resources:
         limits:
-          cpus: "0.50"
-          memory: 1GB
-
+          cpus: 0.5
+          memory: 512M
+          pids: 100
 networks:
   OpenWebUI:
     name: OpenWebUI
